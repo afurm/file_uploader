@@ -1,6 +1,9 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (4.1.1)
+      activesupport (= 4.1.1)
+      builder (~> 3.1)
     activesupport (4.1.1)
       i18n (~> 0.6, >= 0.6.9)
       json (~> 1.7, >= 1.7.7)
@@ -12,6 +15,14 @@ GEM
       ice_nine (~> 0.11.0)
       thread_safe (~> 0.3, >= 0.3.1)
     builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    carrierwave-sequel (0.1.0)
+      carrierwave
+      sequel
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     descendants_tracker (0.0.4)
@@ -31,6 +42,7 @@ GEM
     i18n (0.6.9)
     ice_nine (0.11.0)
     json (1.8.1)
+    mime-types (2.3)
     minitest (5.3.4)
     multi_json (1.10.1)
     multi_xml (0.5.5)
@@ -41,6 +53,8 @@ GEM
       rack (>= 1.0.0)
     rack-test (0.6.2)
       rack (>= 1.0)
+    sequel (4.11.0)
+    sqlite3 (1.3.9)
     thread_safe (0.3.4)
     tzinfo (1.2.1)
       thread_safe (~> 0.1)
@@ -54,6 +68,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  carrierwave
+  carrierwave-sequel
   grape
   minitest
   rack-test
+  sequel
+  sqlite3
