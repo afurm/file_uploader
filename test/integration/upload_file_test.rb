@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'uploaders/asset'
 require 'models/asset'
 require 'app'
 
@@ -27,5 +28,9 @@ describe 'Upload file' do
   it 'retrieves the content for the new file' do
     last_response.body.must_include 'My first zip file'
 
+  end
+
+  it 'retrieves the actual filename' do
+    last_response.body.must_include 'zip.zip'
   end
 end
