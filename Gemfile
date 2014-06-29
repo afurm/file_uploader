@@ -4,7 +4,8 @@ gem 'grape'
 gem 'carrierwave'
 gem 'sqlite3'
 gem 'sequel'
-gem 'carrierwave-sequel'
+gem 'carrierwave-sequel', :require => 'carrierwave/sequel'
+gem 'grape-rabl'
 
 group :test do
   gem 'pry'
