@@ -7,6 +7,7 @@ gem 'sequel'
 gem 'carrierwave-sequel'
 
 group :test do
+  gem 'pry'
   gem 'minitest', require: false
   gem 'rack-test', require: 'rack/test'
 end

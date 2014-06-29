@@ -1,4 +1,5 @@
 require 'test_helper'
+require 'models/asset'
 require 'app'
 
 describe 'Upload file' do
@@ -8,7 +9,7 @@ describe 'Upload file' do
     API::App
   end
 
-  it 'uploads a file' do
+  before do
     file_path = fixtures_path 'zip.zip'
 
     post '/files', {
@@ -17,7 +18,14 @@ describe 'Upload file' do
             file: Rack::Test::UploadedFile.new(file_path, 'application/zip', true)
         }
     }
+  end
 
+  it 'uploads a file' do
     last_response.status.must_equal 201
+  end
+
+  it 'retrieves the content for the new file' do
+    last_response.body.must_include 'My first zip file'
+
   end
 end
