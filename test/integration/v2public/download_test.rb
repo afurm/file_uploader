@@ -12,7 +12,7 @@
    end
 
    let(:id) { Asset.last.id }
-   let(:path) { "/v2/files/#{id}/download" }
+   let(:path) { "/v2public/files/#{id}/download" }
 
    it 'downloads as another user' do
      file_path = fixtures_path 'zip.zip'
