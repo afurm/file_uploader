@@ -1,5 +1,5 @@
 module API
-  class App < Grape::API
+  class AppV2 < Grape::API
     version :v2, using: :path
 
     use Rack::Config do |env|
@@ -9,12 +9,18 @@ module API
     default_format :json
     formatter :json, Grape::Formatter::Rabl
 
+    http_basic do |handler, password|
+      @@user = User.where(handler: handler).first
+      @@user.authorize? password
+    end
+
     resource :files do
       get '/', rabl: 'assets/collection' do
         @assets = Asset.all
       end
 
       post '/', rabl: 'assets/item' do
+        params[:file][:user_id] = @@user.id
         @asset = Asset.new params[:file]
         @asset.save
       end
