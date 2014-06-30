@@ -1,6 +1,6 @@
 module API
   class App < Grape::API
-    version :v1, using: :accept_version_header
+    version :v2, using: :path
 
     use Rack::Config do |env|
       env['api.tilt.root'] = File.join Dir.pwd, 'lib/views'
