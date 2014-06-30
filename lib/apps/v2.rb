@@ -20,6 +20,14 @@ module API
         @assets = Asset.all
       end
 
+      params do
+        requires :id, type: Integer
+      end
+
+      get '/:id', rabl: 'assets/item' do
+        @asset = Asset[params[:id]]
+      end
+
       get '/:id/download' do
         file = Asset[params[:id]]
         path = file.file_url.gsub("public/","")
